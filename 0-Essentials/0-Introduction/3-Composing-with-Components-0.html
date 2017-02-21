@@ -1,0 +1,23 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="utf-8">
+    <title>用组件构建（应用） - 介绍 - Vue.js</title>
+    <script src="https://unpkg.com/vue/dist/vue.js"></script>
+  </head>
+  <body>
+    <ol id="app-7">
+      <!-- 创建一个 todo-item 组件的实例 -->
+      <todo-item></todo-item>
+    </ol>
+    <script>
+      // 定义一个名为 todo-item 的新组件
+      Vue.component('todo-item', {
+        template: '<li>This is a todo</li>'
+      })
+      var app7 = new Vue({
+        el: '#app-7'
+      })
+    </script>
+  </body>
+</html>
