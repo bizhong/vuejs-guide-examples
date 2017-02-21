@@ -1,0 +1,27 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="utf-8">
+    <title>构造器 - Vue 实例 - Vue.js</title>
+    <script src="https://unpkg.com/vue/dist/vue.js"></script>
+  </head>
+  <body>
+    <div id="app">
+    </div>
+    <script>
+      // 扩展 Vue 构造器
+      var MyComponent = Vue.extend({
+        // 扩展选项
+        template: '<div>{{ message }}</div>',
+        data: function () {
+          return {
+            message: 'Hello Vue!'
+          }
+        }
+      })
+      // 创建并挂载到 #app
+      // 会替换 #app
+      new MyComponent().$mount("#app")
+    </script>
+  </body>
+</html>
