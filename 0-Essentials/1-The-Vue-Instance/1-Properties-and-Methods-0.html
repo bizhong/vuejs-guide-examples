@@ -11,13 +11,13 @@
       var vm = new Vue({
         data: data
       })
-      console.log('vm.a === data.a ->' + (vm.a === data.a))// -> true
+      console.log('vm.a === data.a -> ' + (vm.a === data.a)) // -> true
       // 设置属性也会影响到原始数据
       vm.a = 2
-      console.log('data.a ->' + data.a)// -> 2
+      console.log('data.a -> ' + data.a) // -> 2
       // ... 反之亦然
       data.a = 3
-      console.log('vm.a ->' + vm.a)// -> 3
+      console.log('vm.a -> ' + vm.a) // -> 3
     </script>
   </body>
 </html>
