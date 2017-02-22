@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="utf-8">
+    <title>插值 - 模板语法 - Vue.js</title>
+    <script src="https://unpkg.com/vue/dist/vue.js"></script>
+  </head>
+  <body>
+    <div id="app">
+      <!-- #文本 -->
+      <p>
+        <span>Message: {{ msg }}</span>
+      </p>
+      <!-- v-once 指令，执行一次性地插值。 -->
+      <!-- 当数据改变时，插值处的内容不会更新。 -->
+      <p>
+        <span v-once>This will never change: {{ msg }}</span>
+      </p>
+
+      <!-- #纯 HTML -->
+      <div v-html="rawHtml"></div>
+
+      <!-- #属性 -->
+      <div v-bind:id="dynamicId"></div>
+      <!-- 布尔值的属性 -->
+      <button v-bind:disabled="someDynamicCondition">Button</button>
+
+      <!-- #使用 JavaScript 表达式 -->
+      <p>{{ number + 1 }}</p>
+      <p>{{ ok ? 'YES' : 'NO' }}</p>
+      <p>{{ message.split('').reverse().join('') }}</p>
+      <div v-bind:id="'list-' + id"></div>
+    </div>
+    <script>
+      var app = new Vue({
+        el: '#app',
+        data: {
+          msg: 'Hello Vue!',
+          rawHtml: '<p>Raw Html</p>',
+          dynamicId: 'dynamic-id',
+          someDynamicCondition: true,
+          // someDynamicCondition: false,
+          number: 0,
+          ok: true,
+          // ok: false,
+          message: 'Hello Vue!',
+          id: 0
+        }
+      })
+    </script>
+  </body>
+</html>
