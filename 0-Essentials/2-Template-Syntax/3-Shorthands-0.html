@@ -1,0 +1,34 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="utf-8">
+    <title>缩写 - 模板语法 - Vue.js</title>
+    <script src="https://unpkg.com/vue/dist/vue.js"></script>
+  </head>
+  <body>
+    <div id="app">
+      <!-- #v-bind 缩写 -->
+      <p>
+        <a :href="url">{{ url }}</a>
+      </p>
+      
+      <!-- #v-on 缩写 -->
+      <p>
+        <a @click="doSomething">点击事件</a>
+      </p>
+    </div>
+    <script>
+      var app = new Vue({
+        el: '#app',
+        data: {
+          url: 'http://cn.vuejs.org/v2/guide/syntax.html#v-bind-缩写'
+        },
+        methods: {
+          doSomething: function () {
+            alert('doSomething')
+          }
+        }
+      })
+    </script>
+  </body>
+</html>
