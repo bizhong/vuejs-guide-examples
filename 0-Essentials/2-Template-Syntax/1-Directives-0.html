@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="utf-8">
+    <title>指令 - 模板语法 - Vue.js</title>
+    <script src="https://unpkg.com/vue/dist/vue.js"></script>
+  </head>
+  <body>
+    <div id="app">
+      <p v-if="seen">Now you see me</p>
+      <!-- #参数 -->
+      <p>
+        <a v-bind:href="url">{{ url }}</a>
+      </p>
+      <p>
+        <a v-on:click="doSomething">点击事件</a>
+      </p>
+
+      <!-- #修饰符 -->
+      <!-- .prevent 相当于调用 event.preventDefault() -->
+      <form v-on:submit.prevent="onSubmit">
+        <input type="submit">
+      </form>
+    </div>
+    <script>
+      var app = new Vue({
+        el: '#app',
+        data: {
+          seen: true,
+          // seen: false,
+          url: 'http://cn.vuejs.org/v2/guide/syntax.html#参数'
+        },
+        methods: {
+          doSomething: function () {
+            alert('doSomething')
+          },
+          onSubmit: function () {
+            alert('onSubmit')
+          }
+        }
+      })
+    </script>
+  </body>
+</html>
