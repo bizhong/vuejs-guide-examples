@@ -1,0 +1,28 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="utf-8">
+    <title>插值#使用 JavaScript 表达式 - 模板语法 - Vue.js</title>
+    <script src="https://unpkg.com/vue/dist/vue.js"></script>
+  </head>
+  <body>
+    <div id="app">
+      <p>{{ number + 1 }}</p>
+      <p>{{ ok ? 'YES' : 'NO' }}</p>
+      <p>{{ message.split('').reverse().join('') }}</p>
+      <div v-bind:id="'list-' + id"></div>
+    </div>
+    <script>
+      var app = new Vue({
+        el: '#app',
+        data: {
+          number: 0,
+          ok: true,
+          // ok: false,
+          message: 'Hello Vue!',
+          id: 0
+        }
+      })
+    </script>
+  </body>
+</html>
