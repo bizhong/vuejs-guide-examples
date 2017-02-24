@@ -1,0 +1,24 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="utf-8">
+    <title>缩写#v-on 缩写 - 模板语法 - Vue.js</title>
+    <script src="https://unpkg.com/vue/dist/vue.js"></script>
+  </head>
+  <body>
+    <div id="app">
+      <!-- <a v-on:click="doSomething">点击事件</a> -->
+      <a @click="doSomething">点击事件</a>
+    </div>
+    <script>
+      var app = new Vue({
+        el: '#app',
+        methods: {
+          doSomething: function () {
+            alert('doSomething')
+          }
+        }
+      })
+    </script>
+  </body>
+</html>
