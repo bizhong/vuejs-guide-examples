@@ -1,0 +1,22 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="utf-8">
+    <title>绑定内联样式#对象语法 - Class 与 Style 绑定 - Vue.js</title>
+    <script src="https://unpkg.com/vue/dist/vue.js"></script>
+  </head>
+  <body>
+    <div id="example">
+      <div v-bind:style="{ color: activeColor, fontSize: fontSize + 'px' }"></div>
+    </div>
+    <script>
+      var vm = new Vue({
+        el: '#example',
+        data: {
+          activeColor: 'red',
+          fontSize: 30
+        }
+      })
+    </script>
+  </body>
+</html>
