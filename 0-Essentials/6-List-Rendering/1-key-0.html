@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="utf-8">
+    <title>key - 列表渲染 - Vue.js</title>
+    <script src="https://unpkg.com/vue/dist/vue.js"></script>
+  </head>
+  <body>
+    <div id="example">
+      <div v-for="item in items" :key="item.id">
+        {{ item.message }}
+      </div>
+    </div>
+    <script>
+      var vm = new Vue({
+        el: '#example',
+        data: {
+          items: [
+            {
+              id: 0,
+              message: 'Foo'
+            },
+            {
+              id: 1,
+              message: 'Bar'
+            }
+          ]
+        }
+      })
+    </script>
+  </body>
+</html>
