@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="utf-8">
+    <title>v-for#对象迭代 v-for - 列表渲染 - Vue.js</title>
+    <script src="https://unpkg.com/vue/dist/vue.js"></script>
+  </head>
+  <body>
+    <ul id="repeat-object">
+      <li v-for="value in object">
+        {{ value }}
+      </li>
+    </ul>
+    <!-- <ul id="repeat-object">
+      <li v-for="(value, key) in object">
+        {{ key }} : {{ value }}
+      </li>
+    </ul> -->
+    <!-- <ul id="repeat-object">
+      <li v-for="(value, key, index) in object">
+        {{ index }}. {{ key }} : {{ value }}
+      </li>
+    </ul> -->
+    <script>
+      new Vue({
+        el: '#repeat-object',
+        data: {
+          object: {
+            FirstName: 'John',
+            LastName: 'Doe',
+            Age: 30
+          }
+        }
+      })
+    </script>
+  </body>
+</html>
