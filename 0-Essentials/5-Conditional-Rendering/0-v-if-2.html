@@ -1,0 +1,23 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="utf-8">
+    <title>v-if#v-else - 条件渲染 - Vue.js</title>
+    <script src="https://unpkg.com/vue/dist/vue.js"></script>
+  </head>
+  <body>
+    <div id="example">
+      <div v-if="Math.random() > 0.5">
+        Sorry
+      </div>
+      <div v-else>
+        Not sorry
+      </div>
+    </div>
+    <script>
+      var vm = new Vue({
+        el: '#example'
+      })
+    </script>
+  </body>
+</html>
