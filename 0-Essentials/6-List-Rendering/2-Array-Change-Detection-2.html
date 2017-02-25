@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="utf-8">
+    <title>数组更新检测#注意事项 - 列表渲染 - Vue.js</title>
+    <script src="https://unpkg.com/vue/dist/vue.js"></script>
+  </head>
+  <body>
+    <ul id="example-1">
+      <li v-for="item in items">
+        {{ item.message }}
+      </li>
+    </ul>
+    <script>
+      var example1 = new Vue({
+        el: '#example-1',
+        data: {
+          items: [
+            { message: 'Foo' },
+            { message: 'Bar' }
+          ]
+        }
+      })
+      // 由于 JavaScript 的限制，Vue 不能检测以下变动的数组：
+      // 1. 当你利用索引直接设置一个项时，例如：vm.items[indexOfItem] = newValue
+      // 2. 当你修改数组的长度时，例如：vm.items.length = newLength
+
+      example1.items[2] = 'Baz'
+      // example1.items.length = 3
+
+      // 避免第一种情况：
+      // Vue.set 例如：Vue.set(example1.items, indexOfItem, newValue)
+
+      // Vue.set(example1.items, 2, 'Baz')
+
+      // Array.prototype.splice 例如：example1.items.splice(indexOfItem, 1, newValue)
+
+      // example1.items.splice(2, 1, 'Baz')
+
+      // 避免第二种情况：
+      // splice 例如：example1.items.splice(newLength)
+      // example1.items.splice(3)
+    </script>
+  </body>
+</html>
