@@ -1,0 +1,58 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="utf-8">
+    <title>v-if#使用 key 控制元素的可重用 - 条件渲染 - Vue.js</title>
+    <script src="https://unpkg.com/vue/dist/vue.js"></script>
+  </head>
+  <body>
+    <!-- <div id="no-key-example">
+      <template v-if="loginType === 'username'">
+        <label>Username</label>
+        <input placeholder="Enter your username">
+      </template>
+      <template v-else>
+        <label>Email</label>
+        <input placeholder="Enter your email address">
+      </template>
+      <button v-on:click="toggleLoginType">Toggle login type</button>
+    </div>
+    <script>
+      var vm = new Vue({
+        el: '#no-key-example',
+        data: {
+          loginType: 'username'
+        },
+        methods: {
+          toggleLoginType: function () {
+            return this.loginType = this.loginType === 'username' ? 'email' : 'username'
+          }
+        }
+      })
+    </script> -->
+    <div id="key-example">
+      <template v-if="loginType === 'username'">
+        <label>Username</label>
+        <input placeholder="Enter your username" key="username-input">
+      </template>
+      <template v-else>
+        <label>Email</label>
+        <input placeholder="Enter your email address" key="email-input">
+      </template>
+      <button v-on:click="toggleLoginType">Toggle login type</button>
+    </div>
+    <script>
+      var vm = new Vue({
+        el: '#key-example',
+        data: {
+          loginType: 'username'
+        },
+        methods: {
+          toggleLoginType: function () {
+            return this.loginType = this.loginType === 'username' ? 'email' : 'username'
+          }
+        }
+      })
+    </script>
+  </body>
+</html>
