@@ -1,0 +1,27 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="utf-8">
+    <title>v-for#Template v-for - 列表渲染 - Vue.js</title>
+    <script src="https://unpkg.com/vue/dist/vue.js"></script>
+  </head>
+  <body>
+    <ul id="example">
+      <template v-for="item in items">
+        <li>{{ item.msg }}</li>
+        <li class="divider"></li>
+      </template>
+    </ul>
+    <script>
+      var example = new Vue({
+        el: '#example',
+        data: {
+          items: [
+            { msg: 'Foo' },
+            { msg: 'Bar' }
+          ]
+        }
+      })
+    </script>
+  </body>
+</html>
