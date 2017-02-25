@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="utf-8">
+    <title>v-for#组件 和 v-for - 列表渲染 - Vue.js</title>
+    <script src="https://unpkg.com/vue/dist/vue.js"></script>
+  </head>
+  <body>
+    <div id="example">
+      <my-component
+        v-for="(item, index) in items"
+        v-bind:item="item"
+        v-bind:index="index">
+      </my-component>
+    </div>
+    <script>
+      Vue.component('my-component', {
+        template: '\
+          <li>\
+            {{ index }}\
+             - \
+            {{ item.message }}\
+          </li>\
+        ',
+        props: ['item', 'index']
+      })
+      new Vue({
+        el: '#example',
+        data: {
+          items: [
+            { message: 'Foo' },
+            { message: 'Bar' }
+          ]
+        }
+      })
+    </script>
+  </body>
+</html>
