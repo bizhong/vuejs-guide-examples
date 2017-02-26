@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="utf-8">
+    <title>绑定 value - 表单控件绑定 - Vue.js</title>
+    <script src="https://unpkg.com/vue/dist/vue.js"></script>
+  </head>
+  <body>
+    <div id="example-8">
+      <!-- 当选中时，`picked` 为字符串 "a" -->
+      <input type="radio" v-model="picked" value="a">
+      <!-- `toggle` 为 true 或 false -->
+      <input type="checkbox" v-model="toggle">
+      <!-- 当选中时，`selected` 为字符串 "abc" -->
+      <select v-model="selected">
+        <option value="abc">ABC</option>
+      </select>
+      <br>
+      <span>Picked: {{ picked }}, Toggle: {{ toggle }}, Selected: {{ selected }}</span>
+    </div>
+    <script>
+      new Vue({
+        el: '#example-8',
+        data: {
+          picked: '',
+          toggle: false,
+          selected: null
+        }
+      })
+    </script>
+  </body>
+</html>
