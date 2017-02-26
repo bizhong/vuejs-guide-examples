@@ -1,0 +1,72 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="utf-8">
+    <title>事件修饰符 - 事件处理器 - Vue.js</title>
+    <script src="https://unpkg.com/vue/dist/vue.js"></script>
+  </head>
+  <body>
+    <div id="example-4">
+      <!-- Vue.js 为 v-on 提供了 事件修饰符。
+        .stop
+        .prevent
+        .capture
+        .self
+        .once
+      通过由点(.)表示的指令后缀来调用修饰符。 -->
+      <!-- 阻止单击事件冒泡 -->
+      <div v-on:click="doThis">
+        <a v-on:click="doThis">单击事件冒泡</a>
+        <br>
+        <a v-on:click.stop="doThis">阻止单击事件冒泡</a>
+      </div>
+      <!-- 提交事件不再重载页面 -->
+      <div>
+        <form v-on:submit="onSubmit">
+          <input type="submit" value="提交重载">
+        </form>
+        <form v-on:submit.prevent="onSubmit">
+          <input type="submit" value="提交不重载">
+        </form>
+      </div>
+      <!-- 修饰符可以串联 -->
+      <div>
+        <a v-on:click.stop.prevent="doThat">修饰符可以串联</a>
+      </div>
+      <!-- 只有修饰符 -->
+      <div>
+        <form v-on:submit.prevent>
+          <input type="submit" value="只有修饰符">
+        </form>
+      </div>
+      <!-- 添加事件侦听器时使用事件捕获模式 -->
+      <div v-on:click.capture="doThis">
+        <a v-on:click.stop="doThat">单击事件捕获</a>
+      </div>
+      <!-- 只当事件在该元素本身（而不是子元素）触发时触发回调 -->
+      <div v-on:click.self="doThat">
+        <a v-on:click.stop="doThis">只当事件在该元素本身（而不是子元素）触发时触发回调</a>
+      </div>
+      <!-- 点击事件触发最多一次 -->
+      <div>
+        <a v-on:click.once="doThis">点击事件触发最多一次</a>
+      </div>
+    </div>
+    <script>
+      new Vue({
+        el: '#example-4',
+        methods: {
+          doThis: function () {
+            alert('doThis')
+          },
+          onSubmit: function () {
+            alert('onSubmit')
+          },
+          doThat: function () {
+            alert('doThat')
+          }
+        }
+      })
+    </script>
+  </body>
+</html>
