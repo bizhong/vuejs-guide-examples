@@ -1,0 +1,24 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="utf-8">
+    <title>修饰符#.number - 表单控件绑定 - Vue.js</title>
+    <script src="https://unpkg.com/vue/dist/vue.js"></script>
+  </head>
+  <body>
+    <div id="example-13">
+      <!-- 自动将用户的输入值转为 Number 类型（如果原值的转换结果为 NaN 则返回原值） -->
+      <input v-model.number="age" type="number">
+      <br>
+      <span>{{ age }}</span>
+    </div>
+    <script>
+      var vm = new Vue({
+        el: '#example-13',
+        data: {
+          age: 1
+        }
+      })
+    </script>
+  </body>
+</html>
