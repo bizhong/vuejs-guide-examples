@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="utf-8">
+    <title>绑定 value#选择列表设置 - 表单控件绑定 - Vue.js</title>
+    <script src="https://unpkg.com/vue/dist/vue.js"></script>
+  </head>
+  <body>
+    <div id="example-11">
+      <select v-model="selected">
+        <!-- 内联对象字面量 -->
+        <option v-bind:value="{ number: 123 }">123</option>
+      </select>
+      <br>
+      <span>Selected: {{ selected }}</span>
+    </div>
+    <script>
+      var vm = new Vue({
+        el: '#example-11',
+        data: {
+          selected: 0
+        }
+      })
+      // 当选中时
+      typeof vm.selected // -> 'object'
+      vm.selected.number // -> 123
+    </script>
+  </body>
+</html>
