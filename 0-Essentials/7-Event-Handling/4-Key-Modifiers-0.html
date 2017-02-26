@@ -1,0 +1,65 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="utf-8">
+    <title>按键修饰符 - 事件处理器 - Vue.js</title>
+    <script src="https://unpkg.com/vue/dist/vue.js"></script>
+  </head>
+  <body>
+    <div id="example-5">
+      <!-- 全部的按键别名：
+        .enter
+        .tab
+        .delete (捕获 “删除” 和 “退格” 键)
+        .esc
+        .space
+        .up
+        .down
+        .left
+        .right -->
+      <div>
+        <!-- 只有在 keyCode 是 13 时调用 vm.submit() -->
+        <p>Enter：</p>
+        <input v-on:keyup.13="submit">
+        <!-- 同上 -->
+        <input v-on:keyup.enter="submit">
+        <!-- 缩写语法 -->
+        <input @keyup.enter="submit">
+      </div>
+      <!-- 可以用如下修饰符开启鼠标或键盘事件监听，使在按键按下时发生响应。
+        .ctrl
+        .alt
+        .shift
+        .meta -->
+      <div>
+        <!-- Alt + C -->
+        <p>Alt + C：</p>
+        <input @keyup.alt.67="clear">
+      </div>
+      <div>
+        <!-- Ctrl + Click -->
+        <p>Ctrl + Click：</p>
+        <div @click.ctrl="doSomething">Do something</div>
+      </div>
+    </div>
+    <script>
+      var vm = new Vue({
+        el: '#example-5',
+        methods: {
+          submit: function () {
+            alert('Enter')
+          },
+          clear: function () {
+            alert('Alt + C')
+          },
+          doSomething: function () {
+            alert('Ctrl + Click')
+          }
+        }
+      })
+      // 可以通过全局 config.keyCodes 对象自定义按键修饰符别名：
+      // 可以使用 v-on:keyup.f1
+      // Vue.config.keyCodes.f1 = 112
+    </script>
+  </body>
+</html>
