@@ -1,0 +1,26 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="utf-8">
+    <title>Prop#camelCase vs kebab-case - 组件 - Vue.js</title>
+    <script src="https://unpkg.com/vue/dist/vue.js"></script>
+  </head>
+  <body>
+    <div id="example">
+      <!-- kebab-case in HTML -->
+      <child my-message="hello!"></child>
+    </div>
+    <script>
+      new Vue({
+        el: '#example',
+        components: {
+          child: {
+            // camelCase in JavaScript
+            props: ['myMessage'],
+            template: '<span>{{ myMessage }}</span>'
+          }
+        }
+      })
+    </script>
+  </body>
+</html>
