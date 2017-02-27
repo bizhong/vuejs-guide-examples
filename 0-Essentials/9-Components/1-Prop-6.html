@@ -1,0 +1,83 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="utf-8">
+    <title>Prop#Prop 验证 - 组件 - Vue.js</title>
+    <script src="https://unpkg.com/vue/dist/vue.js"></script>
+  </head>
+  <body>
+    <div id="example">
+      <!-- propA -->
+      <!-- <example :prop-a="6"></example> -->
+      <!-- <example :prop-a="'Prop Validation'"></example> -->
+      <!-- propB -->
+      <!-- <example :prop-b="'Prop Validation'"></example> -->
+      <!-- <example :prop-b="6"></example> -->
+      <!-- propC -->
+      <!-- <example :prop-c="'Prop Validation'"></example> -->
+      <!-- <example :prop-c="6"></example> -->
+      <!-- propD -->
+      <!-- <example :prop-c="6"></example> -->
+      <!-- <example :prop-c="'Prop Validation'"></example> -->
+      <!-- propE -->
+      <!-- <example :prop-e="{ message: 'Prop Validation' }"></example> -->
+      <!-- <example :prop-e="[0, 1]"></example> -->
+      <!-- <example :prop-e="6"></example> -->
+      <!-- <example :prop-e="'Prop Validation'"></example> -->
+      <!-- propF -->
+      <!-- <example :prop-f="16"></example> -->
+      <!-- <example :prop-f="6"></example> -->
+
+      <example :prop-a="6" :prop-b="'Prop Validation'" :prop-c="'Prop Validation'"
+      :prop-d="6" :prop-e="{ message: 'Prop Validation' }" :prop-f="16"></example>
+    </div>
+    <script>
+      new Vue({
+        el: '#example',
+        components: {
+          'example': {
+            props: {
+              // 基础类型检测（`null` 意思是任何类型都可以）
+              propA: Number,
+              // 多种类型
+              propB: [String, Number],
+              // 必传且是字符串
+              propC: {
+                type: String,
+                required: true
+              },
+              // 数字，有默认值
+              propD: {
+                type: Number,
+                default: 100
+              },
+              // 数组／对象的默认值应当由一个工厂函数返回
+              propE: {
+                type: Object,
+                default: function () {
+                  return { message: 'hello' }
+                }
+              },
+              // 自定义验证函数
+              propF: {
+                validator: function (value) {
+                  return value > 10
+                }
+              }
+            },
+            template: '<p>F12 控制台查看</p>'
+          }
+        }
+      })
+      // type 可以是下面原生构造器：
+      //   String
+      //   Number
+      //   Boolean
+      //   Function
+      //   Object
+      //   Array
+      // type 也可以是一个自定义构造器，使用 instanceof 检测。
+      // 当 prop 验证失败了，如果使用的是开发版本会抛出一条警告。
+    </script>
+  </body>
+</html>
