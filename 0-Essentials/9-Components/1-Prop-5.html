@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="utf-8">
+    <title>Prop#单向数据流 - 组件 - Vue.js</title>
+    <script src="https://unpkg.com/vue/dist/vue.js"></script>
+  </head>
+  <body>
+    <div id="example">
+      <my-component size=" Medium "></my-component>
+    </div>
+    <script>
+      new Vue({
+        el: '#example',
+        components: {
+          'my-component': {
+            // 定义一个 computed 属性，
+            // 此属性从 prop 的值计算得出
+            props: ['size'],
+            computed: {
+              normalizedSize: function () {
+                return this.size.trim().toLowerCase()
+              }
+            },
+            template: '<span>{{ normalizedSize }}</span>'
+          }
+        }
+      })
+    </script>
+  </body>
+</html>
