@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="utf-8">
+    <title>Prop#动态 Prop - 组件 - Vue.js</title>
+    <script src="https://unpkg.com/vue/dist/vue.js"></script>
+  </head>
+  <body>
+    <div id="demo-2">
+      <input v-model="parentMsg">
+      <br>
+      <child :my-message="parentMsg"></child>
+    </div>
+    <script>
+      new Vue({
+        el: '#demo-2',
+        data: {
+          parentMsg: 'Message from parent'
+        },
+        components: {
+          child: {
+            props: ['myMessage'],
+            template: '<span>{{ myMessage }}</span>'
+          }
+        }
+      })
+    </script>
+  </body>
+</html>
