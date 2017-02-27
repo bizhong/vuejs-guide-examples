@@ -1,0 +1,28 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="utf-8">
+    <title>Prop#字面量语法 vs 动态语法 - 组件 - Vue.js</title>
+    <script src="https://unpkg.com/vue/dist/vue.js"></script>
+  </head>
+  <body>
+    <div id="example">
+      <!-- 传递了一个字符串"1" -->
+      <comp some-prop="1"></comp>
+      <br>
+      <!-- 传递实际的数字 -->
+      <comp v-bind:some-prop="1"></comp>
+    </div>
+    <script>
+      new Vue({
+        el: '#example',
+        components: {
+          comp: {
+            props: ['someProp'],
+            template: '<span>{{ someProp + 1 }}</span>'
+          }
+        }
+      })
+    </script>
+  </body>
+</html>
