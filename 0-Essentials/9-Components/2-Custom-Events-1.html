@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="utf-8">
+    <title>自定义事件#使用 v-on 绑定自定义事件 - 组件 - Vue.js</title>
+    <script src="https://unpkg.com/vue/dist/vue.js"></script>
+  </head>
+  <body>
+    <div id="example">
+      <my-component v-on:click.native="doTheThing"></my-component>
+      <button v-on:click="doTheThing($event)">doTheThing</button>
+    </div>
+    <script>
+      new Vue({
+        el: '#example',
+        components: {
+          'my-component': {
+            template: '<button>doTheThing</button>'
+          }
+        },
+        methods: {
+          doTheThing: function (event) {
+            alert(event.target.innerHTML);
+          }
+        }
+      })
+    </script>
+  </body>
+</html>
