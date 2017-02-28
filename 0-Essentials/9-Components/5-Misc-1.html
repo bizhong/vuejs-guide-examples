@@ -1,0 +1,26 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="utf-8">
+    <title>杂项#异步组件 - 组件 - Vue.js</title>
+    <script src="https://unpkg.com/vue/dist/vue.js"></script>
+  </head>
+  <body>
+    <div id="example">
+      <async-example></async-example>
+    </div>
+    <script>
+      Vue.component('async-example', function (resolve, reject) {
+        setTimeout(function () {
+          // Pass the component definition to the resolve callback
+          resolve({
+            template: '<div>I am async!</div>'
+          })
+        }, 1000)
+      })
+      new Vue({
+        el: '#example'
+      })
+    </script>
+  </body>
+</html>
