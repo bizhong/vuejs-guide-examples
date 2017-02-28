@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="utf-8">
+    <title>使用 Slot 分发内容#单个 Slot - 组件 - Vue.js</title>
+    <script src="https://unpkg.com/vue/dist/vue.js"></script>
+  </head>
+  <body>
+    <div id="example">
+      <h1>我是父组件的标题</h1>
+      <my-component>
+        <p>这是一些初始内容</p>
+        <p>这是更多的初始内容</p>
+      </my-component>
+    </div>
+    <script>
+      Vue.component('my-component', {
+        template: '\
+          <div>\
+            <h2>我是子组件的标题</h2>\
+            <slot>\
+              只有在没有要分发的内容时才会显示。\
+            </slot>\
+          </div>\
+        '
+      })
+      new Vue({
+        el: '#example'
+      })
+    </script>
+  </body>
+</html>
