@@ -1,0 +1,24 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="utf-8">
+    <title>杂项#X-Templates - 组件 - Vue.js</title>
+    <script src="https://unpkg.com/vue/dist/vue.js"></script>
+  </head>
+  <body>
+    <div id="example">
+      <hello-world></hello-world>
+    </div>
+    <script type="text/x-template" id="hello-world-template">
+      <p>Hello hello hello</p>
+    </script>
+    <script>
+      Vue.component('hello-world', {
+        template: '#hello-world-template'
+      })
+      new Vue({
+        el: '#example'
+      })
+    </script>
+  </body>
+</html>
