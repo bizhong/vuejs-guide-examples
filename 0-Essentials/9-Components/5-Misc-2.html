@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="utf-8">
+    <title>杂项#组件间循环引用 - 组件 - Vue.js</title>
+    <script src="https://unpkg.com/vue/dist/vue.js"></script>
+  </head>
+  <body>
+    <div id="example">
+      <p>
+        <span>{{ folder.name }}</span>
+        <tree-folder-contents :children="folder.children"/>
+      </p>
+    </div>
+    <script>
+      Vue.component('tree-folder-contents', {
+        template: '\
+          <ul>\
+            <li v-for="child in children">\
+              <tree-folder v-if="child.children" :folder="child"/>\
+              <span v-else>{{ child.name }}</span>\
+            </li>\
+          </ul>\
+        ',
+        props: ['children']
+      })
+      new Vue({
+        el: '#example',
+        data: {
+          folder: {
+            name: 'Components',
+            children: {
+              children: {
+                name: 'Circular References Between Components'
+              }
+            }
+          }
+        }
+      })
+    </script>
+  </body>
+</html>
