@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="utf-8">
+    <title>动态组件#keep-alive - 组件 - Vue.js</title>
+    <script src="https://unpkg.com/vue/dist/vue.js"></script>
+  </head>
+  <body>
+    <div id="example">
+      <keep-alive>
+        <component :is="currentView">
+          <!-- 非活动组件将被缓存！ -->
+        </component>
+      </keep-alive>
+    </div>
+    <script>
+      var vm = new Vue({
+        el: '#example',
+        data: {
+          currentView: 'home'
+        },
+        components: {
+          home: {
+            template: '<p>Welcome home!</p>'
+          },
+          posts: {
+            template: '<p>Welcome posts!</p>'
+          },
+          archive: {
+            template: '<p>Welcome archive!</p>'
+          }
+        }
+      })
+    </script>
+  </body>
+</html>
