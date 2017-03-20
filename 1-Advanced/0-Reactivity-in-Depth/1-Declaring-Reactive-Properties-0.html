@@ -1,0 +1,23 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="utf-8">
+    <title>声明响应式属性 - 深入响应式原理 - Vue.js</title>
+    <script src="https://unpkg.com/vue/dist/vue.js"></script>
+  </head>
+  <body>
+    <div id="app"></div>
+    <script>
+      var vm = new Vue({
+        el: '#app',
+        data: {
+          // 声明 message 为一个空值字符串
+          message: ''
+        },
+        template: '<div>{{ message }}</div>'
+      })
+      // 之后设置 `message` 
+      vm.message = 'Hello!'
+    </script>
+  </body>
+</html>
