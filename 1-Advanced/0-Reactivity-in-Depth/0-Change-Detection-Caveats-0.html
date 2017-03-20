@@ -15,6 +15,10 @@
       <p>b 的值：{{ o.b }}</p>
       <p>c 的值：{{ o.c }}</p>
     </div>
+    <div id="app-2">
+      <p>a 的值：{{ o.a }}</p>
+      <p>b 的值：{{ o.b }}</p>
+    </div>
     <script>
       var vm = new Vue({
         el: '#app',
@@ -41,6 +45,15 @@
       Vue.set(vm1.o, 'b', 2) // vm1.o.b -> 2
       // 还可以使用 vm.$set 实例方法，这也是全局 Vue.set 方法的别名
       vm1.$set(vm1.o, 'c', 3) // vm1.o.c -> 3
+
+      // 添加到对象上的新属性不会触发更新。
+      var vm2 = new Vue({
+        el: '#app-2',
+        data: {}
+      })
+      // 在这种情况下可以创建一个新的对象，让它包含原对象的属性和新的属性
+      // 代替 `Object.assign(this.someObject, { a: 1, b: 2 })`
+      // this.someObject = Object.assign({}, this.someObject, { a: 1, b: 2 })
     </script>
   </body>
 </html>
