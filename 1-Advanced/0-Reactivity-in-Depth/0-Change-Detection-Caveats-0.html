@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="utf-8">
+    <title>变化检测问题 - 深入响应式原理 - Vue.js</title>
+    <script src="https://unpkg.com/vue/dist/vue.js"></script>
+  </head>
+  <body>
+    <div id="app">
+      <p>a 的值：{{ a }}</p>
+      <p>b 的值：{{ b }}</p>
+    </div>
+    <div id="app-1">
+      <p>a 的值：{{ o.a }}</p>
+      <p>b 的值：{{ o.b }}</p>
+      <p>c 的值：{{ o.c }}</p>
+    </div>
+    <script>
+      var vm = new Vue({
+        el: '#app',
+        data: {
+          a: 1
+        }
+      })
+      // `vm.a` 是响应的
+      console.log(vm.a) // -> 1
+      vm.b = 2
+      // `vm.b` 是非响应的
+      console.log(vm.b) // -> 2
+
+      // Vue 不允许在已经创建的实例上动态添加新的根级响应式属性(root-level reactive property)。
+      var vm1 = new Vue({
+        el: '#app-1',
+        data: {
+          o: {
+            a: 1
+          }
+        }
+      })
+      // 可以使用 Vue.set(object, key, value) 方法将响应属性添加到嵌套的对象上
+      Vue.set(vm1.o, 'b', 2) // vm1.o.b -> 2
+      // 还可以使用 vm.$set 实例方法，这也是全局 Vue.set 方法的别名
+      vm1.$set(vm1.o, 'c', 3) // vm1.o.c -> 3
+    </script>
+  </body>
+</html>
