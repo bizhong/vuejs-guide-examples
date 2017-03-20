@@ -1,0 +1,24 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="utf-8">
+    <title>异步更新队列 - 深入响应式原理 - Vue.js</title>
+    <script src="https://unpkg.com/vue/dist/vue.js"></script>
+  </head>
+  <body>
+    <div id="example">{{message}}</div>
+    <script>
+      var vm = new Vue({
+        el: '#example',
+        data: {
+          message: '123'
+        }
+      })
+      vm.message = 'new message' // 更改数据
+      console.log(vm.$el.textContent === 'new message') // -> false
+      Vue.nextTick(function () {
+        console.log(vm.$el.textContent === 'new message') // -> true
+      })
+    </script>
+  </body>
+</html>
