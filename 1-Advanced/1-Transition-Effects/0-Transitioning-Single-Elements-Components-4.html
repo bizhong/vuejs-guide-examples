@@ -1,0 +1,82 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="utf-8">
+    <title>单元素/组件的过渡#JavaScript 钩子 - 过渡效果 - Vue.js</title>
+    <script src="https://unpkg.com/vue/dist/vue.js"></script>
+  </head>
+  <body>
+    <div id="example-4">
+      <button @click="show = !show">
+        Toggle render
+      </button>
+      <transition
+        v-on:before-enter="beforeEnter"
+        v-on:enter="enter"
+        v-on:after-enter="afterEnter"
+        v-on:enter-cancelled="enterCancelled"
+        v-on:before-leave="beforeLeave"
+        v-on:leave="leave"
+        v-on:after-leave="afterLeave"
+        v-on:leave-cancelled="leaveCancelled"
+      >
+        <p v-if="show">hello</p>
+      </transition>
+    </div>
+    <script>
+      new Vue({
+        el: '#example-4',
+        data: {
+          show: true
+        },
+        methods: {
+          // --------
+          // 进入中
+          // --------
+          beforeEnter: function (el) {
+            // ...
+            console.log('beforeEnter: ' + el.innerHTML)
+          },
+          // 此回调函数是可选项的设置
+          // 与 CSS 结合时使用
+          enter: function (el, done) {
+            // ...
+            console.log('enter: ' + el.innerHTML)
+            done()
+          },
+          afterEnter: function (el) {
+            // ...
+            console.log('afterEnter: ' + el.innerHTML)
+          },
+          enterCancelled: function (el) {
+            // ...
+            console.log('enterCancelled: ' + el.innerHTML)
+          },
+          // --------
+          // 离开时
+          // --------
+          beforeLeave: function (el) {
+            // ...
+            console.log('beforeLeave: ' + el.innerHTML)
+          },
+          // 此回调函数是可选项的设置
+          // 与 CSS 结合时使用
+          leave: function (el, done) {
+            // ...
+            console.log('leave: ' + el.innerHTML)
+            done()
+          },
+          afterLeave: function (el) {
+            // ...
+            console.log('afterLeave: ' + el.innerHTML)
+          },
+          // leaveCancelled 只用于 v-show 中
+          leaveCancelled: function (el) {
+            // ...
+            console.log('leaveCancelled: ' + el.innerHTML)
+          }
+        }
+      })
+    </script>
+  </body>
+</html>
