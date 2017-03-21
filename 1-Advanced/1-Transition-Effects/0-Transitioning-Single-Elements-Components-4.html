@@ -20,7 +20,7 @@
         v-on:after-leave="afterLeave"
         v-on:leave-cancelled="leaveCancelled"
       >
-        <p v-if="show">hello</p>
+        <p v-if="show" v-bind:css="false">hello</p>
       </transition>
     </div>
     <script>
