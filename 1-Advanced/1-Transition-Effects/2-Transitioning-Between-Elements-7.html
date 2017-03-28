@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="utf-8">
+    <title>多个元素的过渡#过渡模式 - 过渡效果 - Vue.js</title>
+    <script src="https://unpkg.com/vue/dist/vue.js"></script>
+    <style> 
+      .no-mode-translate-demo-wrapper {
+        position: relative;
+        height: 18px;
+      }
+      .no-mode-translate-demo-wrapper button {
+        position: absolute;
+      }
+      .no-mode-translate-fade-enter-active, .no-mode-translate-fade-leave-active {
+        transition: all 1s;
+      }
+      .no-mode-translate-fade-enter, .no-mode-translate-fade-leave-active {
+        opacity: 0;
+      }
+      .no-mode-translate-fade-enter {
+        transform: translateX(31px);
+      }
+      .no-mode-translate-fade-leave-active {
+        transform: translateX(-31px);
+      }
+    </style>
+  </head>
+  <body>
+    <div id="no-mode-translate-demo">
+      <div class="no-mode-translate-demo-wrapper">
+        <transition name="no-mode-translate-fade">
+          <button v-bind:key="on" v-on:click="on = !on">
+            {{ on ? 'on' : 'off' }}
+          </button>
+        </transition>
+      </div>
+    </div>
+    <script>  
+      new Vue({
+        el: '#no-mode-translate-demo',
+        data: {
+          on: true
+        }
+      })
+    </script>
+  </body>
+</html>
