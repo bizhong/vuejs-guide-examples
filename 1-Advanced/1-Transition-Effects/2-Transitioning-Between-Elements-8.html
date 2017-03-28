@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="utf-8">
+    <title>多个元素的过渡#过渡模式 - 过渡效果 - Vue.js</title>
+    <script src="https://unpkg.com/vue/dist/vue.js"></script>
+    <style>
+      .with-mode-fade-enter-active, .with-mode-fade-leave-active {
+        transition: opacity .5s
+      }
+      .with-mode-fade-enter, .with-mode-fade-leave-active {
+        opacity: 0
+      }
+    </style>
+  </head>
+  <body>
+    <div id="with-mode-demo">
+      <transition name="with-mode-fade" mode="out-in">
+        <button v-bind:key="on" v-on:click="on = !on">
+          {{ on ? 'on' : 'off' }}
+        </button>
+      </transition>
+    </div>
+    <script>  
+      new Vue({
+        el: '#with-mode-demo',
+        data: {
+          on: true
+        }
+      })
+    </script>
+  </body>
+</html>
