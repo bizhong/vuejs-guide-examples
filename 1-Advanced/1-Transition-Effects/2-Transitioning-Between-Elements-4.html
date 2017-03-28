@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="utf-8">
+    <title>多个元素的过渡 - 过渡效果 - Vue.js</title>
+    <script src="https://unpkg.com/vue/dist/vue.js"></script>
+  </head>
+  <body>
+    <div id="demo">
+      <transition>
+        <button v-bind:key="docState">
+          {{ buttonMessage }}
+        </button>
+      </transition>
+    </div>
+    <script>
+      new Vue({
+        el: '#demo',
+        data: {
+          docState: 'saved'
+          // docState: 'edited'
+          // docState: 'editing'
+        },
+        computed: {
+          buttonMessage: function () {
+            switch (this.docState) {
+              case 'saved': return 'Edit'
+              case 'edited': return 'Save'
+              case 'editing': return 'Cancel'
+            }
+          }
+        }
+      })
+    </script>
+  </body>
+</html>
