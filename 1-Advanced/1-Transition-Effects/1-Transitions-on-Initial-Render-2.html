@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="utf-8">
+    <title>初始渲染的过渡 - 过渡效果 - Vue.js</title>
+    <script src="https://unpkg.com/vue/dist/vue.js"></script>
+  </head>
+  <body>
+    <div id="demo">
+      <button v-on:click="show = !show">
+        Toggle
+      </button>
+      <transition
+        appear
+        v-on:before-appear="customBeforeAppearHook"
+        v-on:appear="customAppearHook"
+        v-on:after-appear="customAfterAppearHook"
+      >
+        <p v-if="show">hello</p>
+      </transition>
+    </div>
+    <script>
+      new Vue({
+        el: '#demo',
+        data: {
+          show: true
+        },
+        methods: {
+          customBeforeAppearHook: function (el) {
+            console.log('beforeAppear: ' + el.innerHTML)
+          },
+          customAppearHook: function (el) {
+            console.log('appear: ' + el.innerHTML)
+          },
+          customAfterAppearHook: function (el) {
+            console.log('afterAppear: ' + el.innerHTML)
+          }
+        }
+      })
+    </script>
+  </body>
+</html>
