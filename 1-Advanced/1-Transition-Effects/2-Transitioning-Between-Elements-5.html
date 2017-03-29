@@ -4,24 +4,27 @@
     <meta charset="utf-8">
     <title>多个元素的过渡#过渡模式 - 过渡效果 - Vue.js</title>
     <script src="https://unpkg.com/vue/dist/vue.js"></script>
-    <style> 
+    <style>
       .no-mode-fade-enter-active, .no-mode-fade-leave-active {
-        transition: opacity .5s
+        transition: opacity .5s;
       }
       .no-mode-fade-enter, .no-mode-fade-leave-active {
-        opacity: 0
+        opacity: 0;
       }
     </style>
   </head>
   <body>
     <div id="no-mode-demo">
       <transition name="no-mode-fade">
-        <button v-bind:key="on" v-on:click="on = !on">
-          {{ on ? 'on' : 'off' }}
+        <button v-if="on" key="on" @click="on = false">
+          on
+        </button>
+        <button v-else key="off" @click="on = true">
+          off
         </button>
       </transition>
     </div>
-    <script>  
+    <script>
       new Vue({
         el: '#no-mode-demo',
         data: {
