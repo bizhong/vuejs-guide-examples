@@ -30,13 +30,16 @@
     <div id="in-out-translate-demo">
       <div class="in-out-translate-demo-wrapper">
         <transition name="in-out-translate-fade" mode="in-out">
-          <button v-bind:key="on" v-on:click="on = !on">
-            {{ on ? 'on' : 'off' }}
+          <button v-if="on" key="on" @click="on = false">
+            on
+          </button>
+          <button v-else key="off" @click="on = true">
+            off
           </button>
         </transition>
       </div>
     </div>
-    <script>  
+    <script>
       new Vue({
         el: '#in-out-translate-demo',
         data: {
