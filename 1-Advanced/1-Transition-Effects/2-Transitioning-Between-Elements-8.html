@@ -16,12 +16,15 @@
   <body>
     <div id="with-mode-demo">
       <transition name="with-mode-fade" mode="out-in">
-        <button v-bind:key="on" v-on:click="on = !on">
-          {{ on ? 'on' : 'off' }}
+        <button v-if="on" key="on" @click="on = false">
+          on
+        </button>
+        <button v-else key="off" @click="on = true">
+          off
         </button>
       </transition>
     </div>
-    <script>  
+    <script>
       new Vue({
         el: '#with-mode-demo',
         data: {
