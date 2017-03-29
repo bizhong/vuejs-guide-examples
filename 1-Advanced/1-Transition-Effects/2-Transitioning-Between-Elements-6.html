@@ -4,7 +4,7 @@
     <meta charset="utf-8">
     <title>多个元素的过渡#过渡模式 - 过渡效果 - Vue.js</title>
     <script src="https://unpkg.com/vue/dist/vue.js"></script>
-    <style> 
+    <style>
       .no-mode-absolute-demo-wrapper {
         position: relative;
         height: 18px;
@@ -24,13 +24,16 @@
     <div id="no-mode-absolute-demo">
       <div class="no-mode-absolute-demo-wrapper">
         <transition name="no-mode-absolute-fade">
-          <button v-bind:key="on" v-on:click="on = !on">
-            {{ on ? 'on' : 'off' }}
+          <button v-if="on" key="on" @click="on = false">
+            on
+          </button>
+          <button v-else key="off" @click="on = true">
+            off
           </button>
         </transition>
       </div>
     </div>
-    <script>  
+    <script>
       new Vue({
         el: '#no-mode-absolute-demo',
         data: {
