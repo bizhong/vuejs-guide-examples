@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="utf-8">
+    <title>可复用的过渡 - 过渡效果 - Vue.js</title>
+    <script src="https://unpkg.com/vue/dist/vue.js"></script>
+  </head>
+  <body>
+    <div id="my-special-transition-demo">
+      <my-special-transition></my-special-transition>
+    </div>
+    <script>
+      Vue.component('my-special-transition', {
+        template: '\
+          <transition\
+            name="very-special-transition"\
+            mode="out-in"\
+            v-on:before-enter="beforeEnter"\
+            v-on:after-enter="afterEnter"\
+          >\
+            <slot></slot>\
+          </transition>\
+        ',
+        methods: {
+          beforeEnter: function (el) {
+            // ...
+          },
+          afterEnter: function (el) {
+            // ...
+          }
+        }
+      })
+      new Vue({
+        el: '#my-special-transition-demo'
+      })
+    </script>
+  </body>
+</html>
