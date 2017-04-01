@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="utf-8">
+    <title>createElement 参数#约束 - Render 函数 - Vue.js</title>
+    <script src="https://unpkg.com/vue/dist/vue.js"></script>
+  </head>
+  <body>
+    <div id="example">
+      <anchored-heading :level="1">Hello world!</anchored-heading>
+    </div>
+    <script>
+      // VNodes 必须唯一
+      Vue.component('anchored-heading', {
+        // render: function (createElement) {
+        //   var myParagraphVNode = createElement('p', 'hi')
+        //   return createElement('div', [
+        //     // 错误-重复的 VNodes
+        //     myParagraphVNode, myParagraphVNode
+        //   ])
+        // },
+        render: function (createElement) {
+          return createElement('div',
+            Array.apply(null, { length: 20 }).map(function () {
+              return createElement('p', 'hi')
+            })
+          )
+        },
+        props: {
+          level: {
+            type: Number,
+            required: true
+          }
+        }
+      })
+      new Vue({
+        el: '#example'
+      })
+    </script>
+  </body>
+</html>
