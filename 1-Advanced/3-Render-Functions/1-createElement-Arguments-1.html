@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="utf-8">
+    <title>createElement 参数#完整示例 - Render 函数 - Vue.js</title>
+    <script src="https://unpkg.com/vue/dist/vue.js"></script>
+  </head>
+  <body>
+    <div id="example">
+      <anchored-heading :level="1">Hello world!</anchored-heading>
+    </div>
+    <script>
+      var getChildrenTextContent = function (children) {
+        return children.map(function (node) {
+          return node.children
+            ? getChildrenTextContent(node.children)
+            : node.text
+        }).join('')
+      }
+      Vue.component('anchored-heading', {
+        render: function (createElement) {
+          // create kebabCase id
+          var headingId = getChildrenTextContent(this.$slots.default)
+            .toLowerCase()
+            .replace(/\W+/g, '-')
+            .replace(/(^\-|\-$)/g, '')
+          return createElement(
+            'h' + this.level,
+            [
+              createElement('a', {
+                attrs: {
+                  name: headingId,
+                  href: '#' + headingId
+                }
+              }, this.$slots.default)
+            ]
+          )
+        },
+        props: {
+          level: {
+            type: Number,
+            required: true
+          }
+        }
+      })
+      new Vue({
+        el: '#example'
+      })
+    </script>
+  </body>
+</html>
