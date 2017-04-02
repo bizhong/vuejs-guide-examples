@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="utf-8">
+    <title>函数化组件#slots() 和 children 对比 - Render 函数 - Vue.js</title>
+    <script src="https://unpkg.com/vue/dist/vue.js"></script>
+  </head>
+  <body>
+    <div id="example">
+      <my-functional-component>
+        <p slot="foo">
+          first
+        </p>
+        <p>second</p>
+      </my-functional-component>
+    </div>
+    <script>
+      Vue.component('my-functional-component', {
+        render: function (createElement) {
+          // <div><slot></slot></div>
+          return createElement('div', this.$children) // 传递两个段落标签
+          // return createElement('div', this.$slots.default) // 传递第二个匿名段落标签
+          // return createElement('div', this.$slots.foo) // 传递第一个具名段落标签
+        }
+      })
+      new Vue({
+        el: '#example'
+      })
+    </script>
+  </body>
+</html>
