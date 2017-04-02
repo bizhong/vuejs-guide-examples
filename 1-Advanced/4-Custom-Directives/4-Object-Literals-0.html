@@ -1,0 +1,20 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="utf-8">
+    <title>对象字面量 - 自定义指令 - Vue.js</title>
+    <script src="https://unpkg.com/vue/dist/vue.js"></script>
+  </head>
+  <body>
+    <div id="object-literals-example" v-demo="{ color: 'white', text: 'hello!' }"></div>
+    <script>
+      Vue.directive('demo', function (el, binding) {
+        console.log(binding.value.color) // => "white"
+        console.log(binding.value.text)  // => "hello!"
+      })
+      new Vue({
+        el: '#object-literals-example'
+      })
+    </script>
+  </body>
+</html>
