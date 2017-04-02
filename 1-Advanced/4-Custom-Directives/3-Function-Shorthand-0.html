@@ -1,0 +1,22 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="utf-8">
+    <title>函数简写 - 自定义指令 - Vue.js</title>
+    <script src="https://unpkg.com/vue/dist/vue.js"></script>
+  </head>
+  <body>
+    <div id="function-shorthand-example" v-color-swatch="rgb">Hello world!</div>
+    <script>
+      Vue.directive('color-swatch', function (el, binding) {
+        el.style.backgroundColor = binding.value
+      })
+      new Vue({
+        el: '#function-shorthand-example',
+        data: {
+          rgb: '#f2f2f2'
+        }
+      })
+    </script>
+  </body>
+</html>
