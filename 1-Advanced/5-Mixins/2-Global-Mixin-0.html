@@ -1,0 +1,27 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="utf-8">
+    <title>全局混合 - 混合 - Vue.js</title>
+    <script src="https://unpkg.com/vue/dist/vue.js"></script>
+  </head>
+  <body>
+    <script>
+      // 一旦使用全局混合对象，将会影响到所有之后创建的 Vue 实例。
+      
+      // 为自定义的选项 'myOption' 注入一个处理器
+      Vue.mixin({
+        created: function () {
+          var myOption = this.$options.myOption
+          if (myOption) {
+            console.log(myOption)
+          }
+        }
+      })
+      new Vue({
+        myOption: 'hello!'
+      })
+      // -> "hello!"
+    </script>
+  </body>
+</html>
