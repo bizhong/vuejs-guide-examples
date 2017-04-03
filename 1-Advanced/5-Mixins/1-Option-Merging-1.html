@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="utf-8">
+    <title>选项合并 - 混合 - Vue.js</title>
+    <script src="https://unpkg.com/vue/dist/vue.js"></script>
+  </head>
+  <body>
+    <script>
+      // 值为对象的选项，例如 methods、components 和 directives，将被混合为同一个对象。
+      // 两个对象键名冲突时，取组件对象的键值对。
+      // Vue.extend() 也使用同样的策略进行合并。
+      
+      var mixin = {
+        methods: {
+          foo: function () {
+            console.log('foo')
+          },
+          conflicting: function () {
+            console.log('from mixin')
+          }
+        }
+      }
+      var vm = new Vue({
+        mixins: [mixin],
+        methods: {
+          bar: function () {
+            console.log('bar')
+          },
+          conflicting: function () {
+            console.log('from self')
+          }
+        }
+      })
+      vm.foo() // -> "foo"
+      vm.bar() // -> "bar"
+      vm.conflicting() // -> "from self"
+    </script>
+  </body>
+</html>
