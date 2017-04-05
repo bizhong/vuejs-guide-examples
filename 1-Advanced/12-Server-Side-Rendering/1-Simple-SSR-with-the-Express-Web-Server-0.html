@@ -1,0 +1,26 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="utf-8">
+    <title>通过 Express Web 服务器实现简单的服务端渲染 - 服务端渲染 - Vue.js</title>
+    <script src="https://unpkg.com/vue/dist/vue.js"></script>
+  </head>
+  <body>
+    <div id="app"></div>
+    <script>
+      new Vue({
+        el: '#app',
+        template: '<div>你已经在这花了 {{ counter }} 秒。</div>',
+        data: {
+          counter: 0
+        },
+        created: function () {
+          var vm = this
+          setInterval(function () {
+            vm.counter += 1
+          }, 1000)
+        }
+      })
+    </script>
+  </body>
+</html>
