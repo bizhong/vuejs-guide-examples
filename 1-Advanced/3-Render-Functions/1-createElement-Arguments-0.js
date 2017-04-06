@@ -2,18 +2,18 @@
 // @returns {VNode}
 createElement(
   // {String | Object | Function}
-  // 一个 HTML 标签字符串，组件选项对象，或者一个返回值类型为String/Object的函数，必要参数
+  // 一个 HTML 标签字符串，组件选项对象，或者一个返回值类型为 String/Object 的函数。必要参数。
   'div',
   // {Object}
   // 一个包含模板相关属性的数据对象
-  // 这样，您可以在 template 中使用这些属性.可选参数.
+  // 这样，您可以在 template 中使用这些属性。可选参数。
   {
-    // 和`v-bind:class`一样的 API
+    // 和 v-bind:class 一样的 API
     'class': {
       foo: true,
       bar: false
     },
-    // 和`v-bind:style`一样的 API
+    // 和 v-bind:style 一样的 API
     style: {
       color: 'red',
       fontSize: '14px'
@@ -40,7 +40,7 @@ createElement(
     nativeOn: {
       click: this.nativeClickHandler
     },
-    // 自定义指令. 注意事项：不能对绑定的旧值设值
+    // 自定义指令。注意事项：不能对绑定的旧值设值。
     // Vue 会为您持续追踪
     directives: [
       {
@@ -58,14 +58,14 @@ createElement(
     scopedSlots: {
       default: props => h('span', props.text)
     },
-    // 如果组件是其他组件的子组件，需为slot指定名称
+    // 如果组件是其他组件的子组件，需为 slot 指定名称
     slot: 'name-of-slot'
     // 其他特殊顶层属性
     key: 'myKey',
     ref: 'myRef'
   },
   // {String | Array}
-  // 子节点(VNodes)，可以是一个字符串或者一个数组. 可选参数.
+  // 子节点（VNodes），可以是一个字符串或者一个数组。可选参数。
   [
     createElement('h1', 'hello world'),
     createElement(MyComponent, {
