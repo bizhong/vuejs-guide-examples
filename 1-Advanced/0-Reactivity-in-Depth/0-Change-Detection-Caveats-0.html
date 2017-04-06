@@ -49,11 +49,13 @@
       // 添加到对象上的新属性不会触发更新。
       var vm2 = new Vue({
         el: '#app-2',
-        data: {}
+        data: {
+          o: {}
+        }
       })
       // 在这种情况下可以创建一个新的对象，让它包含原对象的属性和新的属性
       // 代替 `Object.assign(this.someObject, { a: 1, b: 2 })`
-      // this.someObject = Object.assign({}, this.someObject, { a: 1, b: 2 })
+      vm2.o = Object.assign({}, this.someObject, { a: 1, b: 2 })
     </script>
   </body>
 </html>
