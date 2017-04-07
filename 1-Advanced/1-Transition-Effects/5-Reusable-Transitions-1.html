@@ -7,7 +7,12 @@
   </head>
   <body>
     <div id="my-special-transition-demo">
-      <my-special-transition></my-special-transition>
+      <button v-on:click="show = !show">
+        Toggle
+      </button>
+      <my-special-transition>
+        <p v-if="show">hello</p>
+      </my-special-transition>
     </div>
     <script>
       Vue.component('my-special-transition', {
@@ -21,9 +26,11 @@
             on: {
               beforeEnter: function (el) {
                 // ...
+                console.log('beforeEnter')
               },
               afterEnter: function (el) {
                 // ...
+                console.log('afterEnter')
               }
             }
           }
@@ -31,7 +38,10 @@
         }
       })
       new Vue({
-        el: '#my-special-transition-demo'
+        el: '#my-special-transition-demo',
+        data: {
+          show: true
+        }
       })
     </script>
   </body>
