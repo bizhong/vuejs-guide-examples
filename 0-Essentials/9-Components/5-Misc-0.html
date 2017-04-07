@@ -10,11 +10,13 @@
       <user-profile ref="profile"></user-profile>
     </div>
     <script>
+      Vue.component('user-profile', {
+        template: '<span>User profile</span>'
+      })
       var parent = new Vue({ el: '#parent' })
       // 访问子组件
-      // var child = parent.$refs.profile
-      // 控制台输入
-      // parent.$refs.profile
+      var child = parent.$refs.profile
+      console.log(child)
     </script>
   </body>
 </html>
