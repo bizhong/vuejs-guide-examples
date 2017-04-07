@@ -8,7 +8,7 @@
   <body>
     <ul id="example-1">
       <li v-for="item in items">
-        {{ item.message }}
+        {{ item }}
       </li>
     </ul>
     <script>
@@ -16,8 +16,8 @@
         el: '#example-1',
         data: {
           items: [
-            { message: 'Foo' },
-            { message: 'Bar' }
+            'Foo',
+            'Bar'
           ]
         }
       })
@@ -39,6 +39,7 @@
 
       // 避免第二种情况：
       // splice 例如：example1.items.splice(newLength)
+      
       // example1.items.splice(3)
     </script>
   </body>
