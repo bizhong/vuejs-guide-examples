@@ -2,7 +2,7 @@
 <html>
   <head>
     <meta charset="utf-8">
-    <title>按键修饰符 - 事件处理器 - Vue.js</title>
+    <title>键值修饰符 - 事件处理器 - Vue.js</title>
     <script src="https://unpkg.com/vue/dist/vue.js"></script>
   </head>
   <body>
@@ -26,34 +26,12 @@
         <!-- 缩写语法 -->
         <input @keyup.enter="submit">
       </div>
-      <!-- 可以用如下修饰符开启鼠标或键盘事件监听，使在按键按下时发生响应。
-        .ctrl
-        .alt
-        .shift
-        .meta -->
-      <div>
-        <!-- Alt + C -->
-        <p>Alt + C：</p>
-        <input @keyup.alt.67="clear">
-      </div>
-      <div>
-        <!-- Ctrl + Click -->
-        <p>Ctrl + Click：</p>
-        <div @click.ctrl="doSomething">Do something</div>
-      </div>
-    </div>
     <script>
       var vm = new Vue({
         el: '#example-5',
         methods: {
           submit: function () {
             alert('Enter')
-          },
-          clear: function () {
-            alert('Alt + C')
-          },
-          doSomething: function () {
-            alert('Ctrl + Click')
           }
         }
       })
