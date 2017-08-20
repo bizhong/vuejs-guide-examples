@@ -1,0 +1,28 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="utf-8">
+    <title>v-for#v-for with v-if - 列表渲染 - Vue.js</title>
+    <script src="https://unpkg.com/vue/dist/vue.js"></script>
+  </head>
+  <body>
+    <ul id="example" v-if="shouldRenderTodos">
+      <li v-for="todo in todos">
+        {{ todo.message }}
+      </li>
+    </ul>
+    <script>
+      var example1 = new Vue({
+        el: '#example',
+        data: {
+          shouldRenderTodos: true,
+          // shouldRenderTodos: false,
+          todos: [
+            { message: 'Foo' },
+            { message: 'Bar' }
+          ]
+        }
+      })
+    </script>
+  </body>
+</html>
