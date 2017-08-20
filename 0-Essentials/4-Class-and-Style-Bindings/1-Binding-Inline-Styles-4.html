@@ -1,0 +1,27 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="utf-8">
+    <title>绑定内联样式#多重值 - Class 与 Style 绑定 - Vue.js</title>
+    <script src="https://unpkg.com/vue/dist/vue.js"></script>
+  </head>
+  <body>
+    <div id="example">
+      <!--
+        从 2.3.0 起你可以为 style 绑定中的属性提供一个包含多个值的数组，
+        常用于提供多个带前缀的值。
+      -->
+      <div :style="{ display: ['-webkit-box', '-ms-flexbox', 'flex'] }"></div>
+      <!--
+        这会渲染数组中最后一个被浏览器支持的值。
+        在这个例子中，如果浏览器支持不带浏览器前缀的 flexbox，
+        那么渲染结果会是 display: flex。
+      -->
+    </div>
+    <script>
+      var vm = new Vue({
+        el: '#example'
+      })
+    </script>
+  </body>
+</html>
