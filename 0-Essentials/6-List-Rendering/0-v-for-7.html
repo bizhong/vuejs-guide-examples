@@ -1,0 +1,26 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="utf-8">
+    <title>v-for#v-for with v-if - 列表渲染 - Vue.js</title>
+    <script src="https://unpkg.com/vue/dist/vue.js"></script>
+  </head>
+  <body>
+    <ul id="example">
+      <li v-for="todo in todos" v-if="!todo.isComplete">
+        {{ todo.message }}
+      </li>
+    </ul>
+    <script>
+      var example1 = new Vue({
+        el: '#example',
+        data: {
+          todos: [
+            { isComplete: false, message: 'Foo' },
+            { isComplete: true, message: 'Bar' }
+          ]
+        }
+      })
+    </script>
+  </body>
+</html>
