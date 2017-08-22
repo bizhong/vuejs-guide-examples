@@ -9,7 +9,7 @@
     <div id="currency-input-example">
       <currency-input v-model="price"></currency-input>
     </div>
-    <script>
+    <script> 
       Vue.component('currency-input', {
         template: '\
           <span>\
@@ -29,7 +29,12 @@
               // 删除两侧的空格符
               .trim()
               // 保留 2 小数位
-              .slice(0, value.indexOf('.') + 3)
+              .slice(
+                0,
+                value.indexOf('.') === -1
+                  ? value.length
+                  : value.indexOf('.') + 3
+              )
             // 如果值不统一，手动覆盖以保持一致
             if (formattedValue !== value) {
               this.$refs.input.value = formattedValue
@@ -41,9 +46,7 @@
       })
       new Vue({
         el: '#currency-input-example',
-        data: {
-          price: 0
-        }
+        data: { price: '' }
       })
     </script>
   </body>
