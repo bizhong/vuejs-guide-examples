@@ -28,16 +28,16 @@
       example1.items[2] = 'Baz'
       // example1.items.length = 3
 
-      // 避免第一种情况：
-      // Vue.set 例如：Vue.set(example1.items, indexOfItem, newValue)
+      // 为了解决第一类问题，以下两种方式都可以实现和 vm.items[indexOfItem] = newValue 相同的效果，同时也将触发状态更新：
+      // 1. Vue.set 例如：Vue.set(example1.items, indexOfItem, newValue)
 
       // Vue.set(example1.items, 2, 'Baz')
 
-      // Array.prototype.splice 例如：example1.items.splice(indexOfItem, 1, newValue)
+      // 2. Array.prototype.splice 例如：example1.items.splice(indexOfItem, 1, newValue)
 
       // example1.items.splice(2, 1, 'Baz')
 
-      // 避免第二种情况：
+      // 为了解决第二类问题，你可以使用 splice：
       // splice 例如：example1.items.splice(newLength)
       
       // example1.items.splice(3)
