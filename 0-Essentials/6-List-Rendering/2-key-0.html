@@ -10,6 +10,11 @@
       <div v-for="item in items" :key="item.id">
         {{ item.message }}
       </div>
+      <!--
+          建议尽可能使用 v-for 来提供 key，
+          除非 DOM 内容遍历起来非常简单，
+          或者你是有意识的要依赖于默认行为以便获得性能提升。
+      -->
     </div>
     <script>
       var vm = new Vue({
