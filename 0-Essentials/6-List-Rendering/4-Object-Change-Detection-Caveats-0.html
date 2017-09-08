@@ -1,0 +1,65 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="utf-8">
+    <title>对象更改检测注意事项 - 列表渲染 - Vue.js</title>
+    <script src="https://unpkg.com/vue/dist/vue.js"></script>
+  </head>
+  <body>
+    <ul id="example">
+      <li v-for="value in object">
+        {{ value }}
+      </li>
+    </ul>
+    <ul id="example-1">
+      <li v-for="(value, key) in userProfile">
+        {{ key }}: {{ value }}
+      </li>
+    </ul>
+    <script>
+      // 由于 JavaScript 的限制，Vue 不能检测对象属性的添加或删除。
+      var vm = new Vue({
+        el: '#example',
+        data: {
+          object: {
+            a: 1
+          }
+        }
+      })
+      // `vm.object.a` 现在是响应式的
+
+      // `vm.object.b` 不是响应式的
+      vm.object.b = 2
+
+      // 对于已经创建的实例，Vue 不能动态添加根级别的响应式属性。
+      // 但是，可以使用 `Vue.set(object, key, value)` 方法向嵌套对象添加响应式属性。
+      var vm1 = new Vue({
+        el: '#example-1',
+        data: {
+          userProfile: {
+            name: 'Anika'
+          }
+        }
+      })
+      // 添加一个新的 `age` 属性到嵌套的 `userProfile` 对象：
+      Vue.set(vm1.userProfile, 'age', 27)
+      // 还可以使用 `vm.$set` 实例方法，它只是全局 `Vue.set` 的别名：
+      // vm1.$set(vm1.userProfile, 'age', 27)
+
+      // 有时你可能需要为已有对象赋予多个新属性，比如使用 `Object.assign()` 或 `_.extend()`。
+      // 在这种情况下，你应该用两个对象的属性创建一个新的对象。
+
+      // 所以，如果你想添加新的响应式属性，不要像这样：
+      // Object.assign(vm1.userProfile, {
+      //   age: 27,
+      //   favoriteColor: 'Vue Green'
+      // })
+
+      // 你应该这样做：
+      vm1.userProfile = Object.assign({}, vm1.userProfile, {
+        age: 27,
+        favoriteColor: 'Vue Green'
+      })
+    </script>
+  </body>
+</html>
