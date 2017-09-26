@@ -2,13 +2,13 @@
 <html>
   <head>
     <meta charset="utf-8">
-    <title>单元素/组件的过渡 - 过渡效果 - Vue.js</title>
+    <title>单元素/组件的过渡 - 进入/离开 & 列表过渡 - Vue.js</title>
     <script src="https://unpkg.com/vue/dist/vue.js"></script>
     <style>
       .fade-enter-active, .fade-leave-active {
         transition: opacity .5s
       }
-      .fade-enter, .fade-leave-active {
+      .fade-enter, .fade-leave-to /* .fade-leave-active in below version 2.1.8 */ {
         opacity: 0
       }
     </style>
