@@ -2,11 +2,11 @@
 <html>
   <head>
     <meta charset="utf-8">
-    <title>单元素/组件的过渡#JavaScript 钩子 - 过渡效果 - Vue.js</title>
+    <title>单元素/组件的过渡#JavaScript 钩子 - 进入/离开 & 列表过渡 - Vue.js</title>
     <script src="https://unpkg.com/vue/dist/vue.js"></script>
   </head>
   <body>
-    <div id="example-4">
+    <div id="example-6">
       <button @click="show = !show">
         Toggle render
       </button>
@@ -15,6 +15,7 @@
         v-on:enter="enter"
         v-on:after-enter="afterEnter"
         v-on:enter-cancelled="enterCancelled"
+
         v-on:before-leave="beforeLeave"
         v-on:leave="leave"
         v-on:after-leave="afterLeave"
@@ -25,7 +26,7 @@
     </div>
     <script>
       new Vue({
-        el: '#example-4',
+        el: '#example-6',
         data: {
           show: true
         },
@@ -33,6 +34,7 @@
           // --------
           // 进入中
           // --------
+
           beforeEnter: function (el) {
             // ...
             console.log('beforeEnter: ' + el.innerHTML)
@@ -52,9 +54,11 @@
             // ...
             console.log('enterCancelled: ' + el.innerHTML)
           },
+
           // --------
           // 离开时
           // --------
+
           beforeLeave: function (el) {
             // ...
             console.log('beforeLeave: ' + el.innerHTML)
@@ -77,6 +81,9 @@
           }
         }
       })
+      // 这些钩子函数可以结合 CSS `transitions/animations` 使用，也可以单独使用。
+      // 当只用 JavaScript 过渡的时候，在 `enter` 和 `leave` 中，回调函数 `done` 是必须的。否则，它们会被同步调用，过渡会立即完成。
+      // 推荐对于仅使用 JavaScript 过渡的元素添加 `v-bind:css="false"`，Vue 会跳过 CSS 的检测。这也可以避免过渡过程中 CSS 的影响。
     </script>
   </body>
 </html>
