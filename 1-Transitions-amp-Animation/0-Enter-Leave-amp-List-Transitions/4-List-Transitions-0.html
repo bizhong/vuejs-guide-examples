@@ -2,7 +2,7 @@
 <html>
   <head>
     <meta charset="utf-8">
-    <title>列表过渡#列表的进入和离开过渡 - 过渡效果 - Vue.js</title>
+    <title>列表过渡#列表的进入/离开过渡 - 进入/离开 & 列表过渡 - Vue.js</title>
     <script src="https://unpkg.com/vue/dist/vue.js"></script>
     <style>
       .list-item {
@@ -12,7 +12,8 @@
       .list-enter-active, .list-leave-active {
         transition: all 1s;
       }
-      .list-enter, .list-leave-active {
+      .list-enter, .list-leave-to
+      /* .list-leave-active for below version 2.1.8 */ {
         opacity: 0;
         transform: translateY(30px);
       }
@@ -23,7 +24,7 @@
       <button v-on:click="add">Add</button>
       <button v-on:click="remove">Remove</button>
       <transition-group name="list" tag="p">
-        <span v-for="item in items" :key="item" class="list-item">
+        <span v-for="item in items" v-bind:key="item" class="list-item">
           {{ item }}
         </span>
       </transition-group>
