@@ -2,7 +2,7 @@
 <html>
   <head>
     <meta charset="utf-8">
-    <title>动态过渡 - 过渡效果 - Vue.js</title>
+    <title>动态过渡 - 进入/离开 & 列表过渡 - Vue.js</title>
     <script src="https://unpkg.com/vue/dist/vue.js"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/velocity/1.2.3/velocity.min.js"></script>
   </head>
@@ -18,7 +18,14 @@
       >
         <p v-if="show">hello</p>
       </transition>
-      <button v-on:click="stop = true">Stop it!</button>
+      <button
+        v-if="stop"
+        v-on:click="stop = false; show = false"
+      >Start animating</button>
+      <button
+        v-else
+        v-on:click="stop = true"
+      >Stop it!</button>
     </div>
     <script>
       new Vue({
