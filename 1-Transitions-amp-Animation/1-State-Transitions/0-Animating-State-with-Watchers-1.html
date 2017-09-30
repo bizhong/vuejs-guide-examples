@@ -2,10 +2,10 @@
 <html>
   <head>
     <meta charset="utf-8">
-    <title>状态动画与 watcher - 过渡状态 - Vue.js</title>
+    <title>状态动画与观察者 - 状态过渡 - Vue.js</title>
     <script src="https://unpkg.com/vue/dist/vue.js"></script>
-    <script src="https://unpkg.com/tween.js@16.3.4"></script>
-    <script src="https://unpkg.com/color-js@1.0.3/color.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/tween.js@16.3.4"></script>
+    <script src="https://cdn.jsdelivr.net/npm/color-js@1.0.3"></script>
     <style>
       .example-7-color-preview {
         display: inline-block;
@@ -31,6 +31,7 @@
     </div>
     <script>
       var Color = net.brehaut.Color
+      
       new Vue({
         el: '#example-7',
         data: {
@@ -48,9 +49,10 @@
         },
         watch: {
           color: function () {
-            function animate (time) {
-              requestAnimationFrame(animate)
-              TWEEN.update(time)
+            function animate () {
+              if (TWEEN.update()) {
+                requestAnimationFrame(animate)
+              }
             }
             new TWEEN.Tween(this.tweenedColor)
               .to(this.color, 750)
