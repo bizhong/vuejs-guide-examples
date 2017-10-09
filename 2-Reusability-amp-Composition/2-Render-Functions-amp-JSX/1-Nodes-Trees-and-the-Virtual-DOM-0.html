@@ -1,0 +1,28 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="utf-8">
+    <title>节点、树以及虚拟-DOM#虚拟 DOM - 渲染函数 & JSX - Vue.js</title>
+    <script src="https://unpkg.com/vue/dist/vue.js"></script>
+  </head>
+  <body>
+    <div id="example">
+      <blog-title></blog-title>
+    </div>
+    <script>
+      Vue.component('blog-title', {
+        render: function (createElement) {
+          return createElement('h1', this.blogTitle)
+        },
+        data: function () {
+          return {
+            blogTitle: 'Vue.js'
+          }
+        }
+      })
+      new Vue({
+        el: '#example'
+      })
+    </script>
+  </body>
+</html>
