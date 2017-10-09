@@ -2,7 +2,7 @@
 <html>
   <head>
     <meta charset="utf-8">
-    <title>基础 - Render 函数 - Vue.js</title>
+    <title>基础 - 渲染函数 & JSX - Vue.js</title>
     <script src="https://unpkg.com/vue/dist/vue.js"></script>
   </head>
   <body>
@@ -14,26 +14,24 @@
       </anchored-heading>
     </div>
     <script type="text/x-template" id="anchored-heading-template">
-      <div>
-        <h1 v-if="level === 1">
-          <slot></slot>
-        </h1>
-        <h2 v-if="level === 2">
-          <slot></slot>
-        </h2>
-        <h3 v-if="level === 3">
-          <slot></slot>
-        </h3>
-        <h4 v-if="level === 4">
-          <slot></slot>
-        </h4>
-        <h5 v-if="level === 5">
-          <slot></slot>
-        </h5>
-        <h6 v-if="level === 6">
-          <slot></slot>
-        </h6>
-      </div>
+      <h1 v-if="level === 1">
+        <slot></slot>
+      </h1>
+      <h2 v-else-if="level === 2">
+        <slot></slot>
+      </h2>
+      <h3 v-else-if="level === 3">
+        <slot></slot>
+      </h3>
+      <h4 v-else-if="level === 4">
+        <slot></slot>
+      </h4>
+      <h5 v-else-if="level === 5">
+        <slot></slot>
+      </h5>
+      <h6 v-else-if="level === 6">
+        <slot></slot>
+      </h6>
     </script>
     <script>
       Vue.component('anchored-heading', {
