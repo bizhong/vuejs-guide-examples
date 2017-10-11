@@ -2,13 +2,15 @@
 <html>
   <head>
     <meta charset="utf-8">
-    <title>模板编译 - Render 函数 - Vue.js</title>
+    <title>模板编译 - 渲染函数 & JSX - Vue.js</title>
     <script src="https://unpkg.com/vue/dist/vue.js"></script>
   </head>
   <body>
     <div id="example">
       <div>
-        <h1>I'm a template!</h1>
+        <header>
+          <h1>I'm a template!</h1>
+        </header>
         <p v-if="message">
           {{ message }}
         </p>
@@ -18,12 +20,12 @@
       </div>
     </div>
     <script>
-      // 使用 Vue.compile 来实时编译模板字符串的简单 demo
-      // render
+      // 使用 `Vue.compile` 来实时编译模板字符串的简单 demo
+      // render：
       function anonymous() {
-        with(this){return _h('div',[_h('h1',["I'm a template!"]),(message)?_h('p',[_s(message)]):_h('p',["No message."])])}
+        with(this){return _c('div',[_m(0),(message)?_c('p',[_v(_s(message))]):_c('p',[_v("No message.")])])}
       }
-      // staticRenderFns
+      // staticRenderFns：
       _m(0): function anonymous() {
         with(this){return _c('header',[_c('h1',[_v("I'm a template!")])])}
       }
