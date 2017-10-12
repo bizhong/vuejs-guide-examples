@@ -2,21 +2,24 @@
 <html>
   <head>
     <meta charset="utf-8">
-    <title>过滤器 - 模板语法 - Vue.js</title>
+    <title>过滤器 - 过滤器 - Vue.js</title>
     <script src="https://unpkg.com/vue/dist/vue.js"></script>
   </head>
   <body>
     <div id="app">
-      <!-- #过滤器 -->
-      <!-- 过滤器是 JavaScript 函数 -->
-      <!-- 在 mustache 中绑定过滤器 -->
+      <!-- 过滤器可以用在两个地方： -->
+      
+      <!-- 1. mustache 插值 -->
       <p>原始值：{{ message }}</p>
       <p>过滤后的值：{{ message | capitalize }}</p>
-      <!-- 在 v-bind 表达式中绑定过滤器 -->
+
+      <!-- 2. ·v-bind· 表达式（从 2.1.0+ 开始支持） -->
       <div v-bind:id="rawId | formatId"></div>
-      <!-- 过滤器串联 -->
+
+      <!-- 过滤器可以串联： -->
       <p>过滤器串联过滤后的值：{{ message | filterA | filterB }}</p>
-      <!-- 接受参数的过滤器 -->
+
+      <!-- 过滤器是 JavaScript 函数，因此可以接收参数： -->
       <p>接受参数的过滤器过滤后的值：{{ message | filterC('arg1', arg2) }}</p>
     </div>
     <script>
