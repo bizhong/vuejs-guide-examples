@@ -1,16 +1,16 @@
 import Vue from 'vue'
 import Component from 'vue-class-component'
 
-// The @Component decorator indicates the class is a Vue component
+// @Component 修饰符注明了此类为一个 Vue 组件
 @Component({
-  // All component options are allowed in here
+  // 所有的组件选项都可以放在这里
   template: '<button @click="onClick">Click!</button>'
 })
 export default class MyComponent extends Vue {
-  // Initial data can be declared as instance properties
+  // 初始数据可以直接声明为实例的属性
   message: string = 'Hello!'
   
-  // Component methods can be declared as instance methods
+  // 组件方法也可以直接声明为实例的方法
   onClick (): void {
     window.alert(this.message)
   }
