@@ -31,22 +31,27 @@ var postAppHTML = layoutSections[1]
 server.get('*', function (request, response) {
   // 渲染我们的 Vue 实例作为流
   var stream = renderer.renderToStream(require('./assets/app')())
+
   // 将预先的 HTML 写入响应
   response.write(preAppHTML)
+
   // 每当新的块被渲染
   stream.on('data', function (chunk) {
     // 将块写入响应
     response.write(chunk)
   })
+
   // 当所有的块被渲染完成
   stream.on('end', function () {
     // 将 post-app HTML 写入响应
     response.end(postAppHTML)
   })
+
   // 当渲染时发生错误
   stream.on('error', function (error) {
     // 打印错误到控制台
     console.error(error)
+    
     // 告诉客服端发生了错误
     return response
       .status(500)
