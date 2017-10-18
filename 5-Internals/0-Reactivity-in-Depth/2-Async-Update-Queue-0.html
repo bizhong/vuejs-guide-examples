@@ -14,6 +14,7 @@
           message: '123'
         }
       })
+      
       vm.message = 'new message' // 更改数据
       console.log(vm.$el.textContent === 'new message') // -> false
       Vue.nextTick(function () {
